@@ -6,10 +6,11 @@
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
     "dev:backend": "cd backend && npm run dev",
     "dev:frontend": "cd frontend && npm run dev",
-    "build": "cd frontend && npm run build",
+    "build": "npm run install:deps && cd frontend && npm run build",
+    "start": "NODE_ENV=production npm run start:production",
     "start:production": "cd backend && NODE_ENV=production npm start",
-    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
-    "postinstall": "npm run build",
+    "install:deps": "cd backend && npm install && cd ../frontend && npm install",
+    "postinstall": "npm run install:deps",
     "test": "cd frontend && npm test && cd ../backend && npm test"
   },
   "devDependencies": {
